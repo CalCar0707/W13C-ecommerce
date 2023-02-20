@@ -10,8 +10,11 @@ class Product extends Model {}
 Product.init(
   {
     // define columns
-    id: {
+    product_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
     product_name: {
       type: DataTypes.STRING,
@@ -20,7 +23,7 @@ Product.init(
       type: DataTypes.INTEGER,
     },
     stock: {
-    type: DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     category_id: {
       type: DataTypes.INTEGER,
