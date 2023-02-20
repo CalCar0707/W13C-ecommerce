@@ -8,6 +8,16 @@ class Category extends Model {}
 Category.init(
   {
     // define columns
+    id: {
+      type: DataTypes.INTEGER,
+    },
+    category_name: {
+      type: DataTypes.STRING,
+    },
+    products: {
+      type: DataTypes.STRING,
+    }
+
   },
   {
     //link to dtabase connection
