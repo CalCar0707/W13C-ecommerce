@@ -17,9 +17,9 @@ Category.init(
     category_name: {
       type: DataTypes.STRING,
     },
-    products: {
-      type: DataTypes.STRING,
-    }
+    //products: {
+      //type: DataTypes.STRING,
+   // }
 
   },
   {
