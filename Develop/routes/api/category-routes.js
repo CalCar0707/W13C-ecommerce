@@ -35,10 +35,33 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(
+    {
+      //all the fields you can update and the data attached  to the request body
+    },
+    {
+      where: {
+        //gets the books based on the id given in the request parameters// 07 activity
+      },
+    }
+  )
+  .then((updatedCategory) => {
+    res.json(updatedCategory);
+  })
+  .catch((err) => res.json(err));
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      // add id value here
+    },
+  })
+  .then((deletedCategory) => {
+    res.json(deletedCategory);
+  })
+  .catch((err) => res.json(err));
 });
 
 module.exports = router;
