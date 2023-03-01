@@ -27,9 +27,13 @@ Product.init(
     },
     stock: {
       type: DataTypes.INTEGER,
+      allowNull: false
+      //set defualt value to 10
+      //validates value is numeric
     },
     category_id: {
       type: DataTypes.INTEGER,
+      //reference category models id
     },
 
   },
