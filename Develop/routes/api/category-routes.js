@@ -43,6 +43,7 @@ router.post('/', (req, res) => {
   });
 });
 
+//working properly to update by category_id
 router.put('/:category_id', (req, res) => {
   // update a category by its `id` value
   Category.update(req.body, {
@@ -59,13 +60,13 @@ router.put('/:category_id', (req, res) => {
   .catch((err) => res.json(err));
 });
 
-//working properly to delete by id
-router.delete('/:id', (req, res) => {
+//working properly to delete by category_id
+router.delete('/:category_id', (req, res) => {
   // delete a category by its `id` value
   Category.destroy({
     where: {
       // add id value here
-      id: req.params.id,
+      category_id: req.params.category_id,
     },
   })
   .then((deletedCategory) => {
