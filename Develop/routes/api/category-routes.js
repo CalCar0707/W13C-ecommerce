@@ -12,14 +12,15 @@ router.get('/', (req, res) => {
 
 });
 
-router.get('/:id', (req, res) => {
+//finids category by category_id, working properly
+router.get('/:category_id', (req, res) => {
   // find one category by its `id` value
   //works with find by pk or find one
   //Category.findByPk(req.params.id).then((categoryData) => {
     //res.json(categoryData);
     Category.findOne({
       where: {
-        id: req.params.id,
+        category_id: req.params.category_id,
       },
     }).then ((categoryData) => res.json(categoryData));
   });
@@ -62,10 +63,9 @@ router.put('/:category_id', (req, res) => {
 
 //working properly to delete by category_id
 router.delete('/:category_id', (req, res) => {
-  // delete a category by its `id` value
+
   Category.destroy({
     where: {
-      // add id value here
       category_id: req.params.category_id,
     },
   })
