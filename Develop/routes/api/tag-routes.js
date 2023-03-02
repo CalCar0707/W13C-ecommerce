@@ -12,12 +12,14 @@ router.get('/', (req, res) => {
 
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:tag_id', (req, res) => {
   // find a single tag by its `id`
-  Tag.findByPk(req.params.id).then((tagData) => {
-    res.json(tagData);
-  });
-  // be sure to include its associated Product data
+  Tag.findOne({
+    where: {
+      tag_id: req.params.tag_id,
+    },
+  }).then ((tagData) => res.json(tagData));
+// be sure to include its associated Product data
 });
 
 router.post('/', (req, res) => {
