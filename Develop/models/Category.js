@@ -12,10 +12,9 @@ Category.init(
     // define columns
     category_id: {
       type: DataTypes.INTEGER,
-      //throws error when add these
-      //allowNull: false,
-      //primaryKey: true,
-      //autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
     category_name: {
       type: DataTypes.STRING,

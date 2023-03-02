@@ -7,12 +7,13 @@ class ProductTag extends Model {}
 ProductTag.init(
   {
     // define columns
+    //where does this id go??
     producttag_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
       //throws error when add these
-      //allowNull: false,
-      //primaryKey: true,
-      //autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
     product_id: {
       type: DataTypes.INTEGER,
