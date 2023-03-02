@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:tag_id', (req, res) => {
-  // update a tag's name by its `id` value
+  // update a tag's name by its `id` value, working properly
   Tag.update(req.body, {
     where: {
       tag_id: req.params.tag_id,   
@@ -49,11 +49,11 @@ router.put('/:tag_id', (req, res) => {
   .catch((err) => res.json(err));
 });
 
-router.delete('/:id', (req, res) => {
-  // delete on tag by its `id` value
+router.delete('/:tag_id', (req, res) => {
+  // delete on tag by its `id` value, working properly
   Tag.destroy({
     where: {
-      id:req.params.id,
+      tag_id:req.params.tag_id,
     },
   })
   .then((deletedTag) => {
