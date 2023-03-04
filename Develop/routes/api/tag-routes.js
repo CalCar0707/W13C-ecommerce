@@ -28,9 +28,8 @@ router.get('/:tag_id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
-    tag_id: req.params.tag_id,
-    //tag name shows null
-    tag_name: req.params.tag_name,
+    tag_id: req.body.tag_id,
+    tag_name: req.body.tag_name,
 })
   .then((newTag) => {
     res.json(newTag);
