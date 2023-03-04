@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   }).then((categoryData) => {
     res.json(categoryData);
   });
-  // be sure to include its associated Products
+
 
 });
 
@@ -18,13 +18,11 @@ router.get('/', (req, res) => {
 router.get('/:category_id', (req, res) => {
   // find one category by its `id` value
   //works with find by pk or find one
-  //Category.findByPk(req.params.id).then((categoryData) => {
-    //res.json(categoryData);
     Category.findOne({
       where: {
         category_id: req.params.category_id,
       },
-      //include: [{}]
+      include: [{model: Product}]
     }).then ((categoryData) => res.json(categoryData));
   });
   // be sure to include its associated Products
