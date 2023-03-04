@@ -24,13 +24,10 @@ router.get('/:category_id', (req, res) => {
   
 
 router.post('/', (req, res) => {
-  // create a new category
+  // create a new category, working properly
   Category.create({
-    //insert info here
-    // book example: get info from correlated model
-    //title: req.body.title,
-    //author: req.body.author,
-    //is_paperback: true
+    category_id: req.body.category_id,
+    category_name: req.body.category_name,
   })
   .then((newCategory) => {
     res.json(newCategory);
@@ -54,7 +51,7 @@ router.put('/:category_id', (req, res) => {
   .catch((err) => res.json(err));
 });
 
-//working properly to delete by category_id
+//delete by category_id--  throwing error since updateing index.js
 router.delete('/:category_id', (req, res) => {
 
   Category.destroy({
