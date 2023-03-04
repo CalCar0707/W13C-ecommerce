@@ -42,7 +42,7 @@ Product.init(
       //reference category models id
       references: {
         model: 'category',
-        key: 'category_id,'
+        key: 'category_id',
       },
     },
 
