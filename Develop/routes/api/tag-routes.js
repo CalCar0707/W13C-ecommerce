@@ -6,7 +6,8 @@ const { Tag, Product, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all tags, including associated product data
   Tag.findAll({
-    include: [{model: Product}]
+    //throws error when onclude product data
+    //include: [{model: Product}]
   }).then((tagData) => {
     res.json(tagData);
   });
@@ -18,6 +19,7 @@ router.get('/:tag_id', (req, res) => {
     where: {
       tag_id: req.params.tag_id,
     },
+    //throws error when adding include
     //include: [{model: ProductTag}]
   }).then ((tagData) => res.json(tagData));
 // be sure to include its associated Product data
@@ -26,9 +28,10 @@ router.get('/:tag_id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
-    //insert info here
-
-  })
+    tag_id: req.params.tag_id,
+    //tag name shows null
+    tag_name: req.params.tag_name,
+})
   .then((newTag) => {
     res.json(newTag);
   })
