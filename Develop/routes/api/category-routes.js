@@ -4,20 +4,16 @@ const { Category, Product } = require('../../models');
 // The `/api/categories` endpoint
 
 router.get('/', (req, res) => {
-  // find all categories
+  // find all categories, including associated products
   Category.findAll({
     include: [{model: Product}]
   }).then((categoryData) => {
     res.json(categoryData);
   });
-
-
 });
 
-//finds category by category_id, working properly
+//finds category by category_id, including associated products
 router.get('/:category_id', (req, res) => {
-  // find one category by its `id` value
-  //works with find by pk or find one
     Category.findOne({
       where: {
         category_id: req.params.category_id,
@@ -25,8 +21,7 @@ router.get('/:category_id', (req, res) => {
       include: [{model: Product}]
     }).then ((categoryData) => res.json(categoryData));
   });
-  // be sure to include its associated Products
-//});
+  
 
 router.post('/', (req, res) => {
   // create a new category
@@ -45,17 +40,14 @@ router.post('/', (req, res) => {
   });
 });
 
-//working properly to update by category_id
+//working properly to update by category_id provided in request parameters
 router.put('/:category_id', (req, res) => {
-  // update a category by its `id` value
   Category.update(req.body, {
       where: {
-        //gets the category based on the id given in the request parameters// 07 activity
         category_id: req.params.category_id,
       },
     }
   )
-  //more in depth example on product-routes.js 
   .then((updatedCategory) => {
     res.json(updatedCategory);
   })
