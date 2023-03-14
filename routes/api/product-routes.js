@@ -9,14 +9,14 @@ router.get('/', (req, res) => {
   Product.findAll({
     include: [
       {model: Category}, 
-      //throws error
-      //{model: Tag}
+      //not showing any data in tag
+      {model: Tag}
     ],
   })
   .then((productData) => {
     res.json(productData);
   });
-  // be sure to include its associated Category and Tag data
+  
 });
 
 // get one product
@@ -26,6 +26,10 @@ router.get('/:product_id', (req, res) => {
   where: {
     product_id: req.params.product_id,
   },
+  include: [
+    {model: Category},
+    {model: Tag}
+  ],
  }).then((productData) => res.json(productData));
   // be sure to include its associated Category and Tag data
 });
