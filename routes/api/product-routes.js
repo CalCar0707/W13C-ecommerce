@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   Product.findAll({
     include: [
       {model: Category}, 
+      //throws error
       //{model: Tag}
     ],
   })
@@ -62,11 +63,11 @@ router.post('/', (req, res) => {
 });
 
 // update product
-router.put('/:id', (req, res) => {
+router.put('/:product_id', (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
-      id: req.params.id,
+      product_id: req.params.product_id,
     },
   })
     .then((product) => {
