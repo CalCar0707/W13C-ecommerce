@@ -1,3 +1,4 @@
+//ALL ROUTES WORKING PROPERLY
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
@@ -15,17 +16,16 @@ router.get('/', (req, res) => {
  });
 
 router.get('/:tag_id', (req, res) => {
-  // find a single tag by its `id`
+  // find a single tag by its `id`, including associated tag data
   Tag.findOne({
     where: {
       tag_id: req.params.tag_id,
     },
-    //throws error when adding include
     include: [
       {model: Product}
     ],
   }).then ((tagData) => res.json(tagData));
-// be sure to include its associated Product data
+
 });
 
 router.post('/', (req, res) => {
